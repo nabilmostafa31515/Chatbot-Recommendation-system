@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مساعد ومرشد سياحي (Gemini)</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; background-color: #f4f4f9; padding: 20px; direction: rtl; }
+        .container { max-width: 900px; margin: auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        .form-section { background-color: #e9ecef; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+        .submit-btn { padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s; }
+        .submit-btn:hover { background-color: #0056b3; }
+        .result-box { margin-top: 30px; padding: 20px; border: 1px solid #ddd; background-color: #fff; border-radius: 8px; white-space: pre-wrap; word-wrap: break-word; }
+        .result-header { font-size: 1.5em; margin-bottom: 15px; color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 مساعد ومرشد سياحي بالذكاء الاصطناعي (Gemini)</h1>
+
+        <div class="form-section">
+            <h2>💬 محادثة فورية (Chatbot)</h2>
+            <form method="POST">
+                <label for="chat_query">اسأل عن معلم أو موقع سياحي (مثل: ما تاريخ أبو الهول؟):</label>
+                <input type="text" id="chat_query" name="chat_query" required>
+                <button type="submit" class="submit-btn">إرسال السؤال</button>
+            </form>
+        </div>
+
+        <div class="form-section">
+            <h2>✈️ تخطيط رحلة وإعلانات</h2>
+            <form method="POST">
+                <label for="location">الموقع:</label>
+                <input type="text" id="location" name="location" required>
+                
+                <label for="duration_days">المدة (أيام):</label>
+                <input type="number" id="duration_days" name="duration_days" min="1" required>
+
+                <label for="interests">الاهتمامات (مثل: تاريخ، تسوق، طبيعة):</label>
+                <input type="text" id="interests" name="interests" required>
+
+                <button type="submit" class="submit-btn">توليد الخطة والإعلانات</button>
+            </form>
+        </div>
+
+        {% if result %}
+            <div class="result-box">
+                {% if result_type == 'Chat' %}
+                    <div class="result-header">رد Chatbot:</div>
+                {% else %}
+                    <div class="result-header">خطة وإعلانات الرحلة:</div>
+                {% endif %}
+                <pre>{{ result }}</pre>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>
